@@ -12,9 +12,9 @@ public class Transaction
 
     public decimal Amount { get; set; }
 
-    public DateTime TransactionDate { get; set; }
+    public DateOnly TransactionDate { get; set; }
 
-    public Transaction(TransactionType type, string description, decimal amount, DateTime transactionDate)
+    public Transaction(TransactionType type, string description, decimal amount, DateOnly transactionDate)
     {
         Type = type;
         Description = description;
