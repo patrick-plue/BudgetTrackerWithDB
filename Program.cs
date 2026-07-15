@@ -22,4 +22,6 @@ if (app.Environment.IsDevelopment())
 }
 
 
+app.MapTransactions();
+
 app.Run();
