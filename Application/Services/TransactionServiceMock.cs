@@ -7,7 +7,11 @@ namespace BudgetTrackerWithDB.Application.Services;
 public class TransactionServiceMock : ITransactionService
 {
 
-    private readonly ICollection<Transaction> _transactions = new List<Transaction>();
+    private readonly ICollection<Transaction> _transactions = new List<Transaction>
+    {
+        new Transaction(TransactionType.Expense, "travel", 1200.00M, new DateOnly(2025,10,02)),
+        new Transaction(TransactionType.Income, "salary", 12000.00M, new DateOnly(2026,04,28)),
+    };
 
     public IReadOnlyCollection<Transaction> Transactions => _transactions.ToList().AsReadOnly();
 
