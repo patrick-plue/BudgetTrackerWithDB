@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddSingleton<ITransactionService, TransactionServiceMock>();
-builder.Services.AddSingleton<IReportSerivce, ReportServiceMock>();
+builder.Services.AddSingleton<IReportService, ReportServiceMock>();
 
 builder.Services.AddOpenApi();
 
@@ -23,5 +23,6 @@ if (app.Environment.IsDevelopment())
 
 
 app.MapTransactions();
+app.MapReports();
 
 app.Run();

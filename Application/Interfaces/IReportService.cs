@@ -2,7 +2,7 @@ using BudgetTrackerWithDB.Dtos.Reports;
 namespace BudgetTrackerWithDB.Application.Interfaces;
 
 
-public interface IReportSerivce
+public interface IReportService
 {
-    Task<SummaryReportResponseDto> GetSummaryAsync(DateOnly start, DateOnly end, string type);
+    Task<SummaryReportResponseDto> GetSummaryAsync(DateOnly start, DateOnly end, string? type);
 }

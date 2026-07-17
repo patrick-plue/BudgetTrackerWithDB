@@ -4,13 +4,14 @@ using BudgetTrackerWithDB.Models;
 
 namespace BudgetTrackerWithDB.Application.Services;
 
-public class ReportServiceMock : IReportSerivce
+public class ReportServiceMock : IReportService
 {
 
 
-    public Task<SummaryReportResponseDto> GetSummaryAsync(DateOnly start, DateOnly end, string type)
+    public Task<SummaryReportResponseDto> GetSummaryAsync(DateOnly start, DateOnly end, string? type)
     {
         var filterType = type?.ToLowerInvariant() ?? "all";
+
 
         // Generate deterministic mock categories
         var mockExpenses = new List<Transaction>
@@ -44,7 +45,7 @@ public class ReportServiceMock : IReportSerivce
         // Calculate totals based on filtered items
         var totalIncome = lineItems.Where(i => i.Type == TransactionType.Income).Sum(i => i.Amount);
         var totalExpense = lineItems.Where(i => i.Type == TransactionType.Expense).Sum(i => i.Amount);
-        var net = totalIncome - totalExpense;
+        decimal? net = filterType == "all" ? (totalIncome - totalExpense) : null;
 
         // Return the report wrapper
         var report = new SummaryReportResponseDto(

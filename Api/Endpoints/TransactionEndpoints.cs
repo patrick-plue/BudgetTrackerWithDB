@@ -36,7 +36,7 @@ public static class TransactionEndpoints
 
             var transactionDto = new TransactionResponseDto(transaction.Id, transaction.Timestamp, transaction.Type, transaction.Description, transaction.Amount, transaction.TransactionDate);
 
-            var location = $"{context.Request.Scheme}://{context.Request.Host}/books/{transaction.Id}";
+            var location = $"{context.Request.Scheme}://{context.Request.Host}/transactions/{transaction.Id}";
 
             return Results.Created(location, transactionDto);
         });
